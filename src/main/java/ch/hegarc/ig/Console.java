@@ -18,61 +18,61 @@ public class Console {
      */
     public void runCommand() {
 
-        Scanner command = new Scanner(System.in);
-        System.out.println("Entrer votre commande: ");
-
-        boolean running = true;
-        while (running) {
-            String com = command.nextLine();
-            String[] arguments = com.split(" ");
-            CommandLine cmdLine = parseArguments(arguments);
-
-            switch (cmdLine.getArgs()[0]) {
-
-                case CMD_IMPORT:
-                    if (cmdLine.hasOption(OPT_FICHIER.getOpt())) {
-
-                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
-                        System.out.println("Import du fichier " + fileName);
-
-                        // TODO Import du fichier XML ou JSON
-
-                    } else {
-                        printAppHelp();
-                    }
-                    break;
-
-                case CMD_EXPORT:
-                    if (cmdLine.hasOption(OPT_FICHIER.getOpt()) && cmdLine.hasOption(OPT_COMP.getOpt())) {
-
-                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
-                        String projectName = cmdLine.getOptionValue(OPT_COMP.getOpt());
-                        System.out.println("Export du " + projectName + "dans le fichier " + fileName);
-
-                        // TODO Export du fichier JSON
-
-                    } else {
-                        printAppHelp();
-                    }
-                    break;
-
-                case CMD_STATS:
-
-                    // TODO Calcule des stats des competitions
-
-                    break;
-
-                case CMD_EXIT:
-                    System.out.println("Fermeture!");
-                    running = false;
-                    break;
-
-                default:
-                    System.out.println("Commande non reconnue!");
-                    break;
-            }
-        }
-        command.close();
+//        Scanner command = new Scanner(System.in);
+//        System.out.println("Entrer votre commande: ");
+//
+//        boolean running = true;
+//        while (running) {
+//            String com = command.nextLine();
+//            String[] arguments = com.split(" ");
+//            CommandLine cmdLine = parseArguments(arguments);
+//
+//            switch (cmdLine.getArgs()[0]) {
+//
+//                case CMD_IMPORT:
+//                    if (cmdLine.hasOption(OPT_FICHIER.getOpt())) {
+//
+//                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
+//                        System.out.println("Import du fichier " + fileName);
+//
+//                        // TODO Import du fichier XML ou JSON
+//
+//                    } else {
+//                        printAppHelp();
+//                    }
+//                    break;
+//
+//                case CMD_EXPORT:
+//                    if (cmdLine.hasOption(OPT_FICHIER.getOpt()) && cmdLine.hasOption(OPT_COMP.getOpt())) {
+//
+//                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
+//                        String projectName = cmdLine.getOptionValue(OPT_COMP.getOpt());
+//                        System.out.println("Export du " + projectName + "dans le fichier " + fileName);
+//
+//                        // TODO Export du fichier JSON
+//
+//                    } else {
+//                        printAppHelp();
+//                    }
+//                    break;
+//
+//                case CMD_STATS:
+//
+//                    // TODO Calcule des stats des competitions
+//
+//                    break;
+//
+//                case CMD_EXIT:
+//                    System.out.println("Fermeture!");
+//                    running = false;
+//                    break;
+//
+//                default:
+//                    System.out.println("Commande non reconnue!");
+//                    break;
+//            }
+//        }
+//        command.close();
     }
 
     /**
