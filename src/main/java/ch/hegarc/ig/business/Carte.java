@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // Ignorer les propriétés inconnues
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -11,23 +12,30 @@ import java.util.ArrayList;
 // Ne pas inclure les propriétés null pour cette class
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Carte {
-    private int id;
+    private String id;
+    private List<int[]> lignes = new ArrayList<>();
 
-    public int getId() {
+    public Carte(){
+    }
+
+    public Carte(String id, List<int[]> lignes) {
+        this.id = id;
+        this.lignes = lignes;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private ArrayList<int[]> list;
-
-    public ArrayList<int[]> getList() {
-        return list;
+    public List<int[]> getLignes() {
+        return lignes;
     }
 
-    public void setList(ArrayList<int[]> list) {
-        this.list = list;
+    public void setLignes(List<int[]> lignes) {
+        this.lignes = lignes;
     }
 }

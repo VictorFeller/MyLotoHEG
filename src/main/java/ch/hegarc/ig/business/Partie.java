@@ -1,33 +1,29 @@
 package ch.hegarc.ig.business;
 
-import ch.hegarc.ig.business.Carte;
+import ch.hegarc.ig.jackson.DataBinding.JacksonReader;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 
 public class Partie {
-    //TODO map contenant toutes les cartes
+    private List<Carte> cartesList;
 
-    public void initPartie(){
-        //Initialiser les cartes
-        Carte carte1 = new Carte();
+    public void initPartie() throws IOException {
 
-        int[] ligne1 = {1,2,3,4,5};
-        int[] ligne2 = {10,12,13,14,15};
-        int[] ligne3 = {12,22,32,42,52};
+        //Jackson reader
+        cartesList = JacksonReader.creationCartes();
 
-        ArrayList<int[]> lignes = new ArrayList();
-        lignes.add(ligne1);
-        lignes.add(ligne2);
-        lignes.add(ligne3);
-
-        carte1.setList(lignes);
-
-        for(int[] tab : carte1.getList()){
-            for(int i = 0; i < tab.length; i++){
-                System.out.println(tab[i]);
+        //Afficher le contenu des cartes
+        for(Carte carte : cartesList){
+            if(carte.getId().equals("B5")) {
+                System.out.println();
+                for(int[] ligne : carte.getLignes()){
+                for(int i = 0; i < ligne.length; i++){
+                    System.out.print(ligne[i] + " ");
+                }
+                    System.out.println();
+            }
             }
         }
     }
-
-
 }
