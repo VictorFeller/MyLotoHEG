@@ -40,29 +40,47 @@ public class Partie {
     }
 
     public static void controlCarte(String idCarte){
-        System.out.println("Control de la carte " + idCarte);
-
-//        for(Carte carte : cartesList){
-//            if(carte.getId().equals(idCarte)) {
-//                //Algo de comparaison
-//                System.out.println();
-//                for(int[] ligne : carte.getLignes()){
-//                    for(int i = 0; i < ligne.length; i++){
-//                        System.out.print(ligne[i] + " ");
-//                    }
-//                    System.out.println();
-//                }
-//            }
-//        }
+        int tempControle = 0;
+                //Algo de comparaison
+                System.out.println();
+                for(int[] ligne : carteHashMap.get(idCarte).getLignes()) { // Parcours chaque ligne de la carte
+                    if (isLigneOK(ligne)) {
+                        tempControle++;
+                    }
+                }
+        switch (tempControle) {
+            case 0 :
+                System.out.println("Rien.");
+                break;
+            case 1 :
+                System.out.println("Quine validée.");
+                break;
+            case 2 :
+                System.out.println("Double-quine validée.");
+                break;
+            case 3 :
+                System.out.println("Carton validé.");
+                break;
+        }
     }
 
-//    public List<Carte> getCartesList() {
-//        return cartesList;
-//    }
-//
-//    public void setCartesList(List<Carte> cartesList) {
-//        this.cartesList = cartesList;
-//    }
+    private static boolean isLigneOK(int[] ligne) {
+        int tempLigne = 0;
+        for(int i = 0; i < ligne.length; i++){ // Parcours chaque numéro d'un tableau ligne
+            for(int j = 0; j < listeNumeros.size(); j++) {
+                if (ligne[i] == listeNumeros.get(j)) {
+                    tempLigne++;
+                    break;
+                }
+            }
+        }
+        if (tempLigne == 5) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public List<Integer> getListeNumeros() {
         return listeNumeros;
