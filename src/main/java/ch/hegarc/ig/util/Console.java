@@ -1,78 +1,62 @@
 package ch.hegarc.ig.util;
 
+import ch.hegarc.ig.business.Partie;
 import org.apache.commons.cli.*;
 import java.util.Scanner;
 
 public class Console {
 
-    final private String CMD_IMPORT = "import";
-    final private String CMD_EXPORT = "export";
-    final private String CMD_STATS = "stats";
+    final private String CMD_AJOUTER = "add";
+    final private String CMD_CONTROLER = "ctrl";
+    final private String CMD_SUPPRIMER = "del";
     final private String CMD_EXIT = "exit";
-
-    final private Option OPT_FICHIER = new Option("f", "fichier", true, "nom du fichier");
-    final private Option OPT_COMP = new Option("c", "competiton", true, "nom de la competition");
+    final private String CMD_TUTO = "tuto";
+    final private String CMD_PRINT = "print";
 
     /**
      * Démarre la commande
      */
     public void runCommand() {
+        //Affichage du tutoriel
+        printAppTuto();
 
-//        Scanner command = new Scanner(System.in);
-//        System.out.println("Entrer votre commande: ");
-//
-//        boolean running = true;
-//        while (running) {
-//            String com = command.nextLine();
-//            String[] arguments = com.split(" ");
-//            CommandLine cmdLine = parseArguments(arguments);
-//
-//            switch (cmdLine.getArgs()[0]) {
-//
-//                case CMD_IMPORT:
-//                    if (cmdLine.hasOption(OPT_FICHIER.getOpt())) {
-//
-//                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
-//                        System.out.println("Import du fichier " + fileName);
-//
-//                        // TODO Import du fichier XML ou JSON
-//
-//                    } else {
-//                        printAppHelp();
-//                    }
-//                    break;
-//
-//                case CMD_EXPORT:
-//                    if (cmdLine.hasOption(OPT_FICHIER.getOpt()) && cmdLine.hasOption(OPT_COMP.getOpt())) {
-//
-//                        String fileName = cmdLine.getOptionValue(OPT_FICHIER.getOpt());
-//                        String projectName = cmdLine.getOptionValue(OPT_COMP.getOpt());
-//                        System.out.println("Export du " + projectName + "dans le fichier " + fileName);
-//
-//                        // TODO Export du fichier JSON
-//
-//                    } else {
-//                        printAppHelp();
-//                    }
-//                    break;
-//
-//                case CMD_STATS:
-//
-//                    // TODO Calcule des stats des competitions
-//
-//                    break;
-//
-//                case CMD_EXIT:
-//                    System.out.println("Fermeture!");
-//                    running = false;
-//                    break;
-//
-//                default:
-//                    System.out.println("Commande non reconnue!");
-//                    break;
-//            }
-//        }
-//        command.close();
+        Scanner command = new Scanner(System.in);
+        System.out.println("Entrer vos commande: ");
+
+        boolean running = true;
+        while (running) {
+            String com = command.nextLine();
+            String[] arguments = com.split(" ");
+            CommandLine cmdLine = parseArguments(arguments);
+
+            switch (cmdLine.getArgs()[0]) {
+
+                case CMD_AJOUTER:
+                    Partie.listeNumeros.add(Integer.valueOf(cmdLine.getArgs()[1]));
+                    break;
+
+                case CMD_CONTROLER:
+                    Partie.controlCarte(String.valueOf(cmdLine.getArgs()[1]));
+                    break;
+                case CMD_SUPPRIMER:
+                    Partie.listeNumeros.remove(Partie.listeNumeros.size()-1);
+                    break;
+                case CMD_EXIT:
+                    System.out.println("Fermeture!");
+                    running = false;
+                    break;
+                case CMD_TUTO:
+                    printAppTuto();
+                    break;
+                case CMD_PRINT:
+                    System.out.println(Partie.listeNumeros);
+                    break;
+                default:
+                    System.out.println("Commande non reconnue!");
+                    break;
+            }
+        }
+        command.close();
     }
 
     /**
@@ -95,7 +79,7 @@ public class Console {
 
             System.err.println("Erreur dans la lecture des arguments!");
             System.err.println(ex.toString());
-            printAppHelp();
+            printAppTuto();
         }
 
         return line;
@@ -109,18 +93,20 @@ public class Console {
     private Options getAllOptions() {
 
         Options options = new Options();
-        options.addOption(OPT_FICHIER).addOption(OPT_COMP);
+//        options.addOption(OPT_FICHIER).addOption(OPT_COMP);
         return options;
     }
 
     /**
      * Prints application help
      */
-    private void printAppHelp() {
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(CMD_IMPORT, new Options().addOption(OPT_FICHIER), true);
-        formatter.printHelp(CMD_EXPORT, new Options().addOption(OPT_FICHIER).addOption(OPT_COMP), true);
-        formatter.printHelp(CMD_STATS, new Options().addOption(OPT_COMP), true);
-        formatter.printHelp(CMD_EXIT, new Options());
+    private void printAppTuto() {
+//        HelpFormatter formatter = new HelpFormatter();
+//        formatter.printHelp(CMD_IMPORT, new Options().addOption(OPT_FICHIER), true);
+//        formatter.printHelp(CMD_EXPORT, new Options().addOption(OPT_FICHIER).addOption(OPT_COMP), true);
+//        formatter.printHelp(CMD_STATS, new Options().addOption(OPT_COMP), true);
+//        formatter.printHelp(CMD_EXIT, new Options());
+
+        //TODO tutoriel text
     }
 }
