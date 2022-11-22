@@ -29,34 +29,33 @@ public class Console {
             String[] arguments = com.split(" ");
             CommandLine cmdLine = parseArguments(arguments);
 
-            switch (cmdLine.getArgs()[0]) {
-
-                case CMD_AJOUTER:
-//                    Partie.listeNumeros.add(Integer.valueOf(cmdLine.getArgs()[1]));
-                    Partie.getListeNumeros().add(Integer.valueOf(cmdLine.getArgs()[1]));
-                    break;
-
-                case CMD_CONTROLER:
-                    Partie.controlerCarte(String.valueOf(cmdLine.getArgs()[1]));
-                    break;
-                case CMD_SUPPRIMER:
-//                    Partie.listeNumeros.remove(Partie.listeNumeros.size()-1);
-                    Partie.getListeNumeros().remove(Partie.getListeNumeros().size()-1);
-                    break;
-                case CMD_EXIT:
-                    System.out.println("Fermeture!");
-                    running = false;
-                    break;
-                case CMD_TUTO:
-                    printAppTuto();
-                    break;
-                case CMD_PRINT:
-//                    System.out.println(Partie.listeNumeros);
-                    System.out.println(Partie.getListeNumeros());
-                    break;
-                default:
-                    System.out.println("Commande non reconnue!");
-                    break;
+            try {
+                switch (cmdLine.getArgs()[0]) {
+                    case CMD_AJOUTER:
+                        Partie.getListeNumeros().add(Integer.valueOf(cmdLine.getArgs()[1]));
+                        break;
+                    case CMD_CONTROLER:
+                        Partie.controlerCarte(String.valueOf(cmdLine.getArgs()[1]));
+                        break;
+                    case CMD_SUPPRIMER:
+                        Partie.getListeNumeros().remove(Partie.getListeNumeros().size()-1);
+                        break;
+                    case CMD_EXIT:
+                        System.out.println("Fermeture!");
+                        running = false;
+                        break;
+                    case CMD_TUTO:
+                        printAppTuto();
+                        break;
+                    case CMD_PRINT:
+                        System.out.println(Partie.getListeNumeros());
+                        break;
+                    default:
+                        System.out.println("Commande non reconnue!");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Erreur de saisie");
             }
         }
         command.close();

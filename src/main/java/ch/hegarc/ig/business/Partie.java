@@ -14,7 +14,6 @@ public class Partie {
     public void lancerPartie() throws IOException {
 
         //Jackson reader
-//        carteHashMap = JacksonReader.creationCartes();
         JacksonReader.creationCartes();
 
 //        //Affiche le contenu des cartes
@@ -42,26 +41,30 @@ public class Partie {
 
     public static void controlerCarte(String idCarte){
         int tempControle = 0;
-                //Algo de comparaison
-                System.out.println();
-                for(int[] ligne : carteHashMap.get(idCarte).getLignes()) { // Parcours chaque ligne de la carte
-                    if (isLigneOK(ligne)) {
-                        tempControle++;
-                    }
+        //Algo de comparaison
+        try{
+            for(int[] ligne : carteHashMap.get(idCarte).getLignes()) { // Parcours chaque ligne de la carte
+                if (isLigneOK(ligne)) {
+                    tempControle++;
                 }
-        switch (tempControle) {
-            case 0 :
-                System.out.println("Rien.");
-                break;
-            case 1 :
-                System.out.println("Quine validée.");
-                break;
-            case 2 :
-                System.out.println("Double-quine validée.");
-                break;
-            case 3 :
-                System.out.println("Carton validé.");
-                break;
+            }
+
+            switch (tempControle) {
+                case 0 :
+                    System.out.println("Rien.");
+                    break;
+                case 1 :
+                    System.out.println("Quine validée.");
+                    break;
+                case 2 :
+                    System.out.println("Double-quine validée.");
+                    break;
+                case 3 :
+                    System.out.println("Carton validé.");
+                    break;
+            }
+        }catch (Exception e){
+            System.out.println("id carte non valide");
         }
     }
 
