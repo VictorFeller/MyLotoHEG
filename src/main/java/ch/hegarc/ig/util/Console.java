@@ -16,7 +16,7 @@ public class Console {
     /**
      * Démarre la commande
      */
-    public void runCommand() {
+    public void executerCommande() {
         //Affichage du tutoriel
         printAppTuto();
 
@@ -32,14 +32,16 @@ public class Console {
             switch (cmdLine.getArgs()[0]) {
 
                 case CMD_AJOUTER:
-                    Partie.listeNumeros.add(Integer.valueOf(cmdLine.getArgs()[1]));
+//                    Partie.listeNumeros.add(Integer.valueOf(cmdLine.getArgs()[1]));
+                    Partie.getListeNumeros().add(Integer.valueOf(cmdLine.getArgs()[1]));
                     break;
 
                 case CMD_CONTROLER:
-                    Partie.controlCarte(String.valueOf(cmdLine.getArgs()[1]));
+                    Partie.controlerCarte(String.valueOf(cmdLine.getArgs()[1]));
                     break;
                 case CMD_SUPPRIMER:
-                    Partie.listeNumeros.remove(Partie.listeNumeros.size()-1);
+//                    Partie.listeNumeros.remove(Partie.listeNumeros.size()-1);
+                    Partie.getListeNumeros().remove(Partie.getListeNumeros().size()-1);
                     break;
                 case CMD_EXIT:
                     System.out.println("Fermeture!");
@@ -49,7 +51,8 @@ public class Console {
                     printAppTuto();
                     break;
                 case CMD_PRINT:
-                    System.out.println(Partie.listeNumeros);
+//                    System.out.println(Partie.listeNumeros);
+                    System.out.println(Partie.getListeNumeros());
                     break;
                 default:
                     System.out.println("Commande non reconnue!");
