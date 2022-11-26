@@ -93,9 +93,7 @@ public class Console {
      * @return application <code>Options</code>
      */
     private Options getAllOptions() {
-
         Options options = new Options();
-//        options.addOption(OPT_FICHIER).addOption(OPT_COMP);
         return options;
     }
 
@@ -103,12 +101,16 @@ public class Console {
      * Prints application help
      */
     private void printAppTuto() {
-//        HelpFormatter formatter = new HelpFormatter();
-//        formatter.printHelp(CMD_IMPORT, new Options().addOption(OPT_FICHIER), true);
-//        formatter.printHelp(CMD_EXPORT, new Options().addOption(OPT_FICHIER).addOption(OPT_COMP), true);
-//        formatter.printHelp(CMD_STATS, new Options().addOption(OPT_COMP), true);
-//        formatter.printHelp(CMD_EXIT, new Options());
-
-        //TODO tutoriel text
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("Utilisation de l'application MyLoto :\n");
+        sb.append("Ajouter un numéro étant été pioché => add numéroPioché\n");
+        sb.append("Contrôler la carte d'un joueur => ctrl idDeLaCarte\n");
+        sb.append("Supprimer le dernier numéro inséré => del\n");
+        sb.append("Afficher tous les numéros qui ont été pioché => print\n");
+        sb.append("Afficher le mode d'emploi de l'application => tuto\n");
+        sb.append("Quitter l'application MyLoto => exit\n");
+        System.out.println(sb);
     }
+
 }

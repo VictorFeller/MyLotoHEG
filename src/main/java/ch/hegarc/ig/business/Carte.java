@@ -27,15 +27,8 @@ public class Carte {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public List<int[]> getLignes() {
         return lignes;
     }
 
-    public void setLignes(List<int[]> lignes) {
-        this.lignes = lignes;
-    }
 }

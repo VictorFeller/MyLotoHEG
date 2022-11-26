@@ -16,27 +16,6 @@ public class Partie {
         //Jackson reader
         JacksonReader.creationCartes();
 
-//        //Affiche le contenu des cartes
-//        // Iterating HashMap through for loop
-//        for (Map.Entry<String, Carte> set : carteHashMap.entrySet()) {
-//            // Printing all elements of a Map
-//            System.out.println(set.getKey() + " : ");
-//            for(int[] ligne : set.getValue().getLignes()){
-//                    for(int i = 0; i < ligne.length; i++){
-//                        System.out.print(ligne[i] + " ");
-//                    }
-//                    System.out.println();
-//                }
-//        }
-
-//        //Affiche le contenu d'une carte spécifique
-//        System.out.println("Affiche B5");
-//        for(int[] ligne : carteHashMap.get("B5").getLignes()){
-//            for(int i = 0; i < ligne.length; i++){
-//                System.out.print(ligne[i] + " ");
-//            }
-//            System.out.println();
-//        }
     }
 
     public static void controlerCarte(String idCarte){
@@ -90,11 +69,8 @@ public class Partie {
         return listeNumeros;
     }
 
-    public void setListeNumeros(List<Integer> listeNumeros) {
-        this.listeNumeros = listeNumeros;
-    }
-
     public static HashMap<String, Carte> getCarteHashMap() {
         return carteHashMap;
     }
+
 }

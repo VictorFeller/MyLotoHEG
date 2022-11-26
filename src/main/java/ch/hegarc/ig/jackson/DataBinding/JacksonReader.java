@@ -32,6 +32,5 @@ public class JacksonReader {
             throw new IOException("Erreur à la lecture du json " + ex);
         }
 
-//        return carteHashMap;
     }
 }
